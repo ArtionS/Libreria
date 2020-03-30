@@ -22,3 +22,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/libro', 'LibroController');
+
+Route::get('/cart' , 'LibroController@cart');
+Route::get('/addToCart/{id}' , 'LibroController@addToCart');
+

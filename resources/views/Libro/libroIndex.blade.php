@@ -24,6 +24,9 @@
                                 <th scope="col">Categoria</th>
                                 <th scope="col">Precio</th>
                                 <th scope="col">Stock</th>
+                                <th scope="col">Info</th>
+                                <th scope="col">Add</th>
+
                             </tr>
                             </thead>
                             <tbody>
@@ -31,14 +34,13 @@
 
                                 <tr>
                                     <td>{{$libro->id}}</td>
-                                    <td>
-                                        <a href="{{route('libro.show' , $libro->id)}}">
-                                            {{$libro->libro}} </a>
-                                    </td>
+                                    <td>{{$libro->libro}} </td>
                                     <td>{{$libro->autor}}</td>
                                     <td>{{$libro->categoria->nombre}}</td>
                                     <td>{{$libro->precio}}</td>
                                     <td>{{$libro->stock}}</td>
+                                    <td><a href="{{ route('libro.show' , $libro->id) }}" class="btn btn-outline-info"> Info </a></td>
+                                    <td><a href="{{url('addToCart/*.libro->id')}}" class="btn btn-outline-success"> Add </a></td>
 
 
                                 </tr>

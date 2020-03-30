@@ -139,4 +139,50 @@ class LibroController extends Controller
         $libro ->delete();
         return redirect()->route('tarea.index');
     }
+
+    public function cart(){
+        return view('Libro/libroCart');
+    }
+
+    public function addToCart($id)
+    {
+        $libros = Libro::find($id);
+        $cart = session()->get('cart');
+
+        if(!$cart){
+
+            $cart = [
+                    $id => [
+                        "libro" => $libros->libro,
+                        "quantity" => 1,
+                        "precio" => $libros->precio
+                    ]
+            ];
+
+            session()->put('cart' , $cart);
+
+            return redirect()->back()->with('success', 'Product added to cart!');
+        }
+
+        if(isset($cart[$id])){
+
+            $cart[$id]['quantity']++;
+
+            session()->put('cart' , $cart);
+
+            return redirect()->back()->with('success' , 'Product added to cart!');
+
+        }
+
+        $cart[$id] = [
+            "libro" => $libros->libro,
+            "quantity" => 1,
+            "precio" => $libros->precio
+        ];
+
+        session()->put('cart' , $cart);
+
+        return redirect()->back()->with('success' , 'Product added to cart!');
+    }
+
 }
