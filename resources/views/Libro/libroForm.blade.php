@@ -48,17 +48,26 @@
                             {!! Form::text('autor', null, ['class' => 'form-control', 'id'=> 'autor', 'required', 'placeholder' => 'Nombre de Autor']) !!}
                         </div>
 
-            {{--    Text area de la Descripcion --}}
+            {{--    Seleccion de Categoria del libro                    --}}
                         <div class="form-group">
-                            {!! Form::label('descripcion', 'Descripcion'); !!}
-                            {!! Form::textarea('descripcion' , null, ['class' => 'form-control' , 'rows'=>'3']) !!}
+                            {!! Form::label('categoria_id' , 'Categoria'); !!}
+
+
+                            {!! Form::select('categoria_id',
+                                $categorias, null, ['class' => 'form-control'] ) !!}
                         </div>
+
+            {{--    Text area de la Descripcion --}}
+{{--                        <div class="form-group">--}}
+{{--                            {!! Form::label('descripcion', 'Descripcion'); !!}--}}
+{{--                            {!! Form::textarea('descripcion' , null, ['class' => 'form-control' , 'rows'=>'3']) !!}--}}
+{{--                        </div>--}}
 
             {{--    Precio del Libro                        --}}
                         <div class="form-group">
                             {!! Form::label('precio' , 'Precio'); !!}
                             <br>
-                            {!! Form::number('precio', '0'); !!}
+                            {!! Form::number('precio', null , ['id'=>'precio' , 'required']); !!}
 
                         </div>
 
@@ -66,7 +75,7 @@
                         <div class="form-group">
                             {!! Form::label('stock' , 'Stock'); !!}
                             <br>
-                            {!! Form::number('stock', '0'); !!}
+                            {!! Form::number('stock', null , ['id'=>'stock' , 'required']); !!}
 
                         </div>
 
@@ -79,7 +88,7 @@
                                     '1' => 'Disponible' ,
                                     '0' => 'No Disponible'
                                     ], null, ['class' => 'form-control'] ) !!}
-
+                        </div>
                         <br>
 
             {{--    Boton de submit del Formulario                    --}}

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Categoria;
 use App\Libro;
 use Illuminate\Http\Request;
 
@@ -20,11 +21,11 @@ class LibroController extends Controller
      */
     public function index()
     {
-        $libro = Libro::all();
+        $libros = Libro::all();
 
         ///dd($libros);
 
-        return view('Libro/libroIndex' , compact('libro'));
+        return view('Libro/libroIndex' , compact('libros'));
     }
 
     /**
@@ -34,8 +35,9 @@ class LibroController extends Controller
      */
     public function create()
     {
+        $categorias = Categoria::all()->pluck('nombre' , 'id');
 
-        return view('Libro/libroForm');
+        return view('Libro/libroForm' , compact('categorias'));
     }
 
     /**
@@ -51,6 +53,7 @@ class LibroController extends Controller
         $request->validate([
             'libro'=>'required|max:255',
             'autor'=>'required|max:255',
+            'categoria_id' => 'required',
             'precio'=>'required',
             'stock'=>'required',
         ]);
@@ -65,8 +68,9 @@ class LibroController extends Controller
 
         $libro->save();
 
-        dd($tarea);
+//        dd($tarea);
 
+        return redirect()->route('libro.index');
     }
 
     /**
@@ -77,7 +81,7 @@ class LibroController extends Controller
      */
     public function show(Libro $libro)
     {
-        //
+        return view('Libro/libroShow', compact('libro'));
     }
 
     /**
@@ -88,7 +92,10 @@ class LibroController extends Controller
      */
     public function edit(Libro $libro)
     {
-        //
+
+        $categorias = Categoria::all()->pluck('nombre' , 'id');
+
+        return view('Libro/libroForm', compact('libro' , 'categorias'));
     }
 
     /**
@@ -100,7 +107,25 @@ class LibroController extends Controller
      */
     public function update(Request $request, Libro $libro)
     {
-        //
+        $request->validate([
+            'libro'=>'required|max:255',
+            'autor'=>'required|max:255',
+            'categoria_id' => 'required',
+            'precio'=>'required',
+            'stock'=>'required',
+        ]);
+
+
+        $libro->libro = $request->libro;
+        $libro->autor = $request->autor;
+        $libro->categoria_id = $request->categoria_id;
+        $libro->precio = $request->precio;
+        $libro->stock = $request->stock;
+        $libro->disponibilidad = $request->disponibilidad;
+
+        $libro->save();
+
+        return redirect()->route('libro.show' , $libro->id);
     }
 
     /**
@@ -111,6 +136,7 @@ class LibroController extends Controller
      */
     public function destroy(Libro $libro)
     {
-        //
+        $libro ->delete();
+        return redirect()->route('tarea.index');
     }
 }

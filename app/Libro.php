@@ -6,5 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Libro extends Model
 {
-    //
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function categoria()
+    {
+        return $this->belongsTo(Categoria::class);
+    }
 }
