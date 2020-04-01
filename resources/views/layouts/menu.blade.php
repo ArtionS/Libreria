@@ -9,7 +9,7 @@
 
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon">
-                        <i class="fas fa-columns"></i>
+                        <i class="fas fa-book-open"></i>
                     </div>
                     Libros
                     <div class="sb-sidenav-collapse-arrow">

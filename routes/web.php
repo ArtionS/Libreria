@@ -19,10 +19,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/libro', 'LibroController');
+Route::resource('/home', 'LibroController')->middleware('auth');;
 
-Route::get('/cart' , 'LibroController@cart');
-Route::get('/addToCart/{id}' , 'LibroController@addToCart');
+Route::resource('/libro', 'LibroController')->middleware('auth');;
+
+//Route::get('/cart' , 'LibroController@cart');
+//Route::get('/addToCart/{id}' , 'LibroController@addToCart');
 

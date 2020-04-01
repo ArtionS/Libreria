@@ -33,7 +33,7 @@
 </nav>
 <div id="layoutSidenav">
 
-{{--    Men;u de scroll lateral --}}
+{{--    Men u de scroll lateral --}}
    @include('layouts.menu')
 
         <main>
