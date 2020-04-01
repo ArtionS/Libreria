@@ -86,8 +86,8 @@
 
                 <div class="links">
                     <a href="{{ action('LibroController@index')}}">Libros</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
+
+{{--                    <a href="https://laracasts.com">Laracasts</a>--}}
 
                 </div>
             </div>

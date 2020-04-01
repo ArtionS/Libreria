@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.tema')
 
 @section('content')
     <div class="container">
@@ -67,7 +67,7 @@
                         <div class="form-group">
                             {!! Form::label('precio' , 'Precio'); !!}
                             <br>
-                            {!! Form::number('precio', null , ['id'=>'precio' , 'required']); !!}
+                            {!! Form::number('precio', null , ['id'=>'precio' , 'required',  'step'=>'0.01']); !!}
 
                         </div>
 
@@ -75,7 +75,7 @@
                         <div class="form-group">
                             {!! Form::label('stock' , 'Stock'); !!}
                             <br>
-                            {!! Form::number('stock', null , ['id'=>'stock' , 'required']); !!}
+                            {!! Form::number('stock', null , ['id'=>'stock' , 'required' ]); !!}
 
                         </div>
 
